@@ -1,33 +1,38 @@
- <h2>
-      Add a new movie
-    </h2>
+ 
+<h2>
+  Add a new movie
+</h2>
 
-    <form action="/movies" method="post">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<% @the_movie.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+<% end %>
 
-      <div>
-        <label for="title_box">
-          Title
-        </label>
+<form action="/movies" method="post" data-turbo="false">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-        <input type="text" id="title_box" name="query_title">
-      </div>
+  <div>
+    <label for="title_box">
+      Title
+    </label>
 
-      <div>
-        <label for="description_box">
-          Description
-        </label>
+    <input type="text" id="title_box" name="query_title">
+  </div>
 
-        <textarea id="description_box" name="query_description" rows="3"></textarea>
-      </div>
+  <div>
+    <label for="description_box">
+      Description
+    </label>
 
-      <div>
-        <input type="checkbox" id="released_box" name="query_released" value="1">
+    <textarea id="description_box" name="query_description" rows="3"></textarea>
+  </div>
 
-        <label for="released_box">Released</label>
-      </div>
+  <div>
+    <input type="checkbox" id="released_box" name="query_released" value="1">
 
-      <button>
-        Create movie
-      </button>
-    </form>
+    <label for="released_box">Released</label>
+  </div>
+
+  <button>
+    Create movie
+  </button>
+</form>
